@@ -1,0 +1,8 @@
+[serial]                    # Serial connection configuration section.
+path = "COM4"               # Serial port to open. (type: String)
+baud_rate = 19200           # Baud rate to use when opening the serial connection. (type: u32)
+bit_length = 8              # Number of bits per character. (type: u8, should be 5, 6, 7, or 8)
+flow_control = "software"   # The type of flow control to use (XON/XOFF or RTS/CTS). (type: "hardware" | "software" | "none")
+parity = "none"             # The type of parity checking to use. (type: "none" | "odd" | "even")
+timeout = 30                # The duration, in seconds, to wait for data to be received by the serial port. (type: usize)
+stop_bits = "One"           # The number of stop bits to use when opening the serial connection. (type: "One" | "Two")
