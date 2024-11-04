@@ -6,3 +6,5 @@ edition = "2021"
 [dependencies]
 serialport = "4.6.0"
 toml = "0.8.19"
+serde = { version = "1.0.214", features = ["derive"] }
+tokio = "1.41.0"
