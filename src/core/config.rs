@@ -1,12 +1,11 @@
 use std::error::Error;
-use std::fmt::{Debug, Display};
+use std::fmt::{Debug};
 use std::fs::File;
 use std::io::{BufReader, Read};
 use std::path::Path;
 use std::time::Duration;
 
-use serde::{Deserialize, Deserializer};
-use serde::de::Visitor;
+use serde::{Deserialize};
 use serialport::{DataBits, FlowControl, Parity, StopBits};
 
 /// The raw TOML interpretation of the finalized Serial configuration struct. This is a wrapper
@@ -20,7 +19,8 @@ struct RawSerialConfiguration {
     parity: String,
     timeout: usize,
     stop_bits: String,
-    path: String,
+    input_path: String,
+    output_path: String,
 }
 
 /// The raw TOML interpretation of the finalized configuration struct. This is a wrapper
@@ -40,7 +40,8 @@ pub struct SerialConfiguration {
     pub parity: Parity,
     pub timeout: Duration,
     pub stop_bits: StopBits,
-    pub path: String,
+    pub input_path: String,
+    pub output_path: String,
 }
 
 /// The deserialized configuration object.
@@ -77,7 +78,8 @@ impl From<RawConfiguration> for Configuration {
             "Two" => StopBits::Two,
             _default => StopBits::One
         };
-        let path = value.serial.path;
+        let input_path = value.serial.input_path;
+        let output_path = value.serial.output_path;
 
         Self {
             serial: SerialConfiguration {
@@ -87,7 +89,8 @@ impl From<RawConfiguration> for Configuration {
                 parity,
                 timeout,
                 stop_bits,
-                path,
+                input_path,
+                output_path,
             },
         }
     }
