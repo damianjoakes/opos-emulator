@@ -1,0 +1,8 @@
+[package]
+name = "opos-emulator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serialport = "4.6.0"
+toml = "0.8.19"
