@@ -67,7 +67,7 @@ impl SerialChannel {
         let writeable = channel.writable().await;
         let bytes = match writeable {
             Ok(_) => {
-                channel.try_write(&buf)?
+                channel.try_write(buf)?
             }
             Err(err) => {
                 // todo: Flag DTR as false, in case we want to implement better error handling.

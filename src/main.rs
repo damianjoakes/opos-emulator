@@ -24,8 +24,6 @@ async fn main() {
                 println!("{bytes} bytes read");
                 let data = buf.to_vec();
                 println!("{:?}", data);
-
-                let _ = channel.respond();
             }
             Err(err) => {
                 if err.kind() == WouldBlock {
